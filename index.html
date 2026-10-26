@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:linear-gradient(135deg,#4facfe,#00f2fe);
+    }
+
+    .container{
+        background:#fff;
+        padding:35px 40px;
+        border-radius:15px;
+        text-align:center;
+        box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    #display{
+        font-size:60px;
+        font-weight:bold;
+        margin-bottom:30px;
+        color:#333;
+        letter-spacing:3px;
+    }
+
+    button{
+        padding:12px 28px;
+        margin:0 8px;
+        border:none;
+        border-radius:8px;
+        font-size:18px;
+        font-weight:bold;
+        cursor:pointer;
+        transition:0.3s;
+    }
+
+    button:nth-child(2){
+        background:#28a745;
+        color:#fff;
+    }
+
+    button:nth-child(3){
+        background:#dc3545;
+        color:#fff;
+    }
+
+    button:nth-child(4){
+        background:#ffc107;
+        color:#000;
+    }
+
+    button:hover{
+        transform:translateY(-3px);
+        box-shadow:0 5px 12px rgba(0,0,0,0.2);
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div id="display">00:00:00</div>
+        <button onclick="startWatch()">Start</button>
+        <button onclick="reset()">Reset</button>
+        <button onclick="stop()">Stop</button>
+    </div>
+</body>
+<script>
+    let hour = 0
+    let min = 0
+    let sec = 0
+    let timer;
+    running = false
+
+    function updateDisplay() {
+
+        let h=hour < 10 ? "0" +hour :hour;
+        let m=min < 10 ? "0"+min : min;
+        let s=sec  <  10  ? "0"+sec : sec;
+
+        document.querySelector("#display").innerHTML = h + ":" + m + ":" + s
+    }
+
+    function startWatch() {
+        if (running == false) {
+            running = true
+       
+
+            timer = setInterval(() => {
+                if (sec == 60) {
+                    sec = 0;
+                    min++;
+                }
+
+
+                if (min == 60) {
+                    min = 0
+                    hour++
+
+                }
+                updateDisplay()
+                     sec++
+
+
+            }, 1000)
+        }
+    }
+
+    
+    function reset(){
+        if(running==true){
+            clearInterval(timer)
+            running=false
+            hour=0
+            min=0
+            sec=0
+
+            updateDisplay()
+        }
+    }
+
+   function stop(){
+    if(running==true){
+        clearInterval(timer)
+        updateDisplay()
+    }
+
+}
+
+</script>
+
+</html>

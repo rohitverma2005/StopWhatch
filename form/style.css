@@ -1,0 +1,31 @@
+body{
+    background: linear-gradient(150deg, red, yellow, rgb(34, 124, 192));
+     display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 105vh;
+    text-align: center;
+}
+form{
+    font-family: Arial,;
+    /* height: 500px; */
+    width: 500px;
+    border: 2px solid rgb(24, 161, 206);
+    padding: 2px;
+    box-shadow: 10px 10px 20px ;
+    border-radius: 30px;
+   
+
+}
+h2{
+    /* font-size: 20px; */
+    border: 1px solid whitesmoke;
+    box-shadow: 2px 2px 2px  ;
+    border-radius: 50px;
+}
+button{
+    /* color: rgb(88, 121, 231); */
+    background-color: rgb(222, 121, 198);
+    /* text-wrap: calc(); */
+    
+}
